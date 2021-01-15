@@ -41,6 +41,5 @@ function populateGrid() {
         symbol.textContent = operation;
         grid.appendChild(symbol);
     });
-    console.log("popp");
 }
 populateGrid();
