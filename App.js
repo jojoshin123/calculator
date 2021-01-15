@@ -34,6 +34,23 @@ function populateGrid() {
         foo.classList.add("item");
         foo.textContent = item;
         grid.appendChild(foo);
+        foo.addEventListener('click', () => {
+            const display = document.querySelector(".display");
+            if (foo.textContent == "AC") {
+                output.displayString = "";
+            } else if (foo.textContent == "=") {
+                output.displayString = "result";
+            } else {
+                output.displayString += foo.textContent;
+            }
+            display.textContent = output.displayString;
+        });
     });
+
 }
 populateGrid();
+
+let output = {
+    displayString: "",
+    result: "",
+}
