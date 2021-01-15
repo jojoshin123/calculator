@@ -28,18 +28,12 @@ function operate(x, y, func) {
 // Populate the grid
 function populateGrid() {
     const grid = document.querySelector(".grid");
-    for (let i = 1; i <= 9; i++) {
-        const item = document.createElement('div');
-        item.classList.add("item");
-        item.textContent = i;
-        grid.appendChild(item);
-    }
-    const operations = ["+", "-", "*", "/", "=", "AC"]
-    operations.forEach(operation => {
-        const symbol = document.createElement('div');
-        symbol.classList.add("item");
-        symbol.textContent = operation;
-        grid.appendChild(symbol);
+    const items = [7, 8, 9, "/", 4, 5, 6, "*", 1, 2, 3, "-", 0, ".", "=", "+"];
+    items.forEach(item => {
+        const foo = document.createElement('div');
+        foo.classList.add("item");
+        foo.textContent = item;
+        grid.appendChild(foo);
     });
 }
 populateGrid();
