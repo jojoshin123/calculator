@@ -14,7 +14,6 @@ function operate(x, y, func) {
         case "-":
             return subtract(x, y);
             break;
-        case "x":
         case "*":
             return multiply(x, y);
             break;
@@ -35,5 +34,13 @@ function populateGrid() {
         item.textContent = i;
         grid.appendChild(item);
     }
+    const operations = ["+", "-", "*", "/", "=", "AC"]
+    operations.forEach(operation => {
+        const symbol = document.createElement('div');
+        symbol.classList.add("item");
+        symbol.textContent = operation;
+        grid.appendChild(symbol);
+    });
+    console.log("popp");
 }
 populateGrid();
