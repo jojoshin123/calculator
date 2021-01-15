@@ -28,7 +28,7 @@ function operate(x, y, func) {
 // Populate the grid
 function populateGrid() {
     const grid = document.querySelector(".grid");
-    const items = [7, 8, 9, "/", 4, 5, 6, "*", 1, 2, 3, "-", 0, ".", "=", "+"];
+    const items = ["", "", "", "AC", 7, 8, 9, "/", 4, 5, 6, "*", 1, 2, 3, "-", 0, ".", "=", "+"];
     items.forEach(item => {
         const foo = document.createElement('div');
         foo.classList.add("item");
