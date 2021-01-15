@@ -1,0 +1,20 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    justify-content: center;
+}
+
+.grid .item {
+    display: block;
+    padding: 20px 0;
+    text-align: center;
+    background-color: rgb(174, 217, 255);
+    border: 1px solid black;
+    margin: 10%;
+    font-size: xx-large;
+}
+
+.grid .item:hover {
+    cursor: pointer;
+}

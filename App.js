@@ -25,3 +25,15 @@ function operate(x, y, func) {
             return "Invalid Function"
     }
 }
+
+// Populate the grid
+function populateGrid() {
+    const grid = document.querySelector(".grid");
+    for (let i = 1; i <= 9; i++) {
+        const item = document.createElement('div');
+        item.classList.add("item");
+        item.textContent = i;
+        grid.appendChild(item);
+    }
+}
+populateGrid();
