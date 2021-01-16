@@ -23,6 +23,7 @@ body {
     padding: 20px;
     width: 350px;
     font-size: xxx-large;
+    box-shadow: 5px 5px black;
 }
 
 .grid {

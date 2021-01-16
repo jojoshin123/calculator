@@ -28,7 +28,7 @@ function operate(x, y, func) {
 // Populate the grid
 function populateGrid() {
     const grid = document.querySelector(".grid");
-    const items = ["", "", "", "AC", 7, 8, 9, "/", 4, 5, 6, "*", 1, 2, 3, "-", 0, ".", "=", "+"];
+    const items = ["+/-", "", "", "AC", 7, 8, 9, "/", 4, 5, 6, "*", 1, 2, 3, "-", 0, ".", "=", "+"];
     items.forEach(item => {
         const foo = document.createElement('div');
         foo.classList.add("item");
@@ -42,6 +42,13 @@ function populateGrid() {
                     display.textContent = "";
                 }
                 display.textContent += val;
+            } else if (val == "+/-") {
+                if (display.textContent.includes("-")) {
+                    display.textContent = display.textContent.slice(1);
+                } else {
+                    display.textContent = "-".concat(display.textContent);
+                }
+
             } else if (val == "+" || val == "-" || val == "*" || val == "/" || val == "=") {
 
                 //Set operand1 to display text
