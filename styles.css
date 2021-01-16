@@ -11,6 +11,7 @@ body {
     width: 400px;
     margin: 0 auto;
     border-radius: 10%;
+    border: 2px solid black;
     box-shadow: 10px 10px black;
 }
 
