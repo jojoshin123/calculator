@@ -34,7 +34,7 @@ function populateGrid() {
         foo.classList.add("item");
         foo.textContent = item;
         grid.appendChild(foo);
-        foo.addEventListener('click', () => { listener(foo) });
+        foo.addEventListener('click', () => { listener(foo.textContent) });
     });
 }
 populateGrid();
@@ -45,14 +45,14 @@ let output = {
     result: null,
 }
 
-function listener(foo) {
+function listener(textContent) {
     const display = document.querySelector(".display");
-    const val = foo.textContent;
+    const val = textContent;
     if (!isNaN(val) || val == ".") { //if foo is a number or "."
         if (display.textContent == output.result) {
             display.textContent = "";
         }
-        if (val == "." && display.textContent.includes(".")) {
+        if ((val == "." && display.textContent.includes(".")) || display.textContent.length >= 10) {
             display.textContent = display.textContent;
         } else {
             display.textContent += val;
@@ -78,8 +78,8 @@ function listener(foo) {
             output.result = output.operand1;
         } else {
             output.operand1 = operate(output.result, output.operand1, output.operation);
-            if ((output.operand1.toString().includes(".")) && (output.operand1.toString().length > 11)) {
-                output.result = output.operand1.toPrecision(11);
+            if ((output.operand1.toString().length >= 10)) {
+                output.result = output.operand1.toPrecision(10);
             } else {
                 output.result = output.operand1;
             }
