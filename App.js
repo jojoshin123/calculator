@@ -89,13 +89,6 @@ function populateGrid() {
 
 
             }
-            // if (foo.textContent == "=") {
-            //     output.result = operate(output.result, output.operand1, output.operation);
-            //     console.log(`operand1 = ${output.operand1}`);
-            //     console.log(`operation = ${output.operation}`);
-            //     console.log(`result = ${output.result}`);
-            //     display.textContent = output.result;
-            // }
 
             if (foo.textContent == "AC") {
                 output.operand1 = null;
