@@ -67,7 +67,11 @@ function populateGrid() {
                     output.result = output.operand1;
                 } else {
                     output.operand1 = operate(output.result, output.operand1, output.operation);
-                    output.result = output.operand1.toPrecision(11);
+                    if (output.operand1.toString().includes(".")) {
+                        output.result = output.operand1.toPrecision(11);
+                    } else {
+                        output.result = output.operand1;
+                    }
                     display.textContent = output.result;
                 }
                 console.log(`operand1 = ${output.operand1}`);
@@ -78,7 +82,7 @@ function populateGrid() {
                 if (val != "=") { output.operation = val; }
 
                 if (val == "=") {
-                    display.textContent = output.result.toPrecision(11);
+                    display.textContent = output.result;
                     output.operand1 = output.result;
                     output.result = null;
                 }
