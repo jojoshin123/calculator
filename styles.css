@@ -1,6 +1,16 @@
 body {
+    animation: fadeInAnimation 2s;
     background-color: rgb(255, 229, 157);
     font-family: 'Roboto Mono', monospace;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .container {

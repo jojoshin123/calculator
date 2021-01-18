@@ -39,6 +39,8 @@ function populateGrid() {
 }
 populateGrid();
 
+document.addEventListener('keydown', (e) => { listener(e.key) });
+
 let output = {
     operand1: null,
     operation: "",
@@ -64,7 +66,7 @@ function listener(textContent) {
             display.textContent = "-".concat(display.textContent);
         }
 
-    } else if (val == "+" || val == "-" || val == "*" || val == "/" || val == "=") {
+    } else if (val == "+" || val == "-" || val == "*" || val == "/" || val == "=" || val == "Enter") {
 
         //Set operand1 to display text
         if (display.textContent.includes(".")) {
@@ -92,7 +94,7 @@ function listener(textContent) {
         //store operation
         if (val != "=") { output.operation = val; }
 
-        if (val == "=") {
+        if (val == "=" || val == "Enter") {
             display.textContent = output.result;
             output.operand1 = output.result;
             output.result = null;
