@@ -8,6 +8,7 @@ Basic calculator with add, subtract, multiply, and divide functions
 # TODO
 - Animate key-press with keyboard input (perhaps using jQuery...?)
 - Fix minor bug when the user hits an operation twice
+- Add extra functions to the two blank buttons up top?
 
 # Screenshot Preview
 
