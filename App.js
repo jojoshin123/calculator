@@ -34,71 +34,8 @@ function populateGrid() {
         foo.classList.add("item");
         foo.textContent = item;
         grid.appendChild(foo);
-        foo.addEventListener('click', () => {
-            const display = document.querySelector(".display");
-            const val = foo.textContent;
-            if (!isNaN(val) || val == ".") { //if foo is a number or "."
-                if (display.textContent == output.result) {
-                    display.textContent = "";
-                }
-                if (val == "." && display.textContent.includes(".")) {
-                    display.textContent = display.textContent;
-                } else {
-                    display.textContent += val;
-                }
-            } else if (val == "+/-") {
-                if (display.textContent.includes("-")) {
-                    display.textContent = display.textContent.slice(1);
-                } else {
-                    display.textContent = "-".concat(display.textContent);
-                }
-
-            } else if (val == "+" || val == "-" || val == "*" || val == "/" || val == "=") {
-
-                //Set operand1 to display text
-                if (display.textContent.includes(".")) {
-                    output.operand1 = parseFloat(display.textContent);
-                } else {
-                    output.operand1 = parseInt(display.textContent);
-                }
-
-                //calculate current result
-                if (output.result == null) {
-                    output.result = output.operand1;
-                } else {
-                    output.operand1 = operate(output.result, output.operand1, output.operation);
-                    if (output.operand1.toString().includes(".")) {
-                        output.result = output.operand1.toPrecision(11);
-                    } else {
-                        output.result = output.operand1;
-                    }
-                    display.textContent = output.result;
-                }
-                console.log(`operand1 = ${output.operand1}`);
-                console.log(`operation = ${output.operation}`);
-                console.log(`result = ${output.result}`);
-
-                //store operation
-                if (val != "=") { output.operation = val; }
-
-                if (val == "=") {
-                    display.textContent = output.result;
-                    output.operand1 = output.result;
-                    output.result = null;
-                }
-
-
-            }
-
-            if (foo.textContent == "AC") {
-                output.operand1 = null;
-                output.operation = "";
-                output.result = null;
-                display.textContent = "";
-            }
-        });
+        foo.addEventListener('click', () => { listener(foo) });
     });
-
 }
 populateGrid();
 
@@ -106,4 +43,65 @@ let output = {
     operand1: null,
     operation: "",
     result: null,
+}
+
+function listener(foo) {
+    const display = document.querySelector(".display");
+    const val = foo.textContent;
+    if (!isNaN(val) || val == ".") { //if foo is a number or "."
+        if (display.textContent == output.result) {
+            display.textContent = "";
+        }
+        if (val == "." && display.textContent.includes(".")) {
+            display.textContent = display.textContent;
+        } else {
+            display.textContent += val;
+        }
+    } else if (val == "+/-") {
+        if (display.textContent.includes("-")) {
+            display.textContent = display.textContent.slice(1);
+        } else {
+            display.textContent = "-".concat(display.textContent);
+        }
+
+    } else if (val == "+" || val == "-" || val == "*" || val == "/" || val == "=") {
+
+        //Set operand1 to display text
+        if (display.textContent.includes(".")) {
+            output.operand1 = parseFloat(display.textContent);
+        } else {
+            output.operand1 = parseInt(display.textContent);
+        }
+
+        //calculate current result
+        if (output.result == null) {
+            output.result = output.operand1;
+        } else {
+            output.operand1 = operate(output.result, output.operand1, output.operation);
+            if ((output.operand1.toString().includes(".")) && (output.operand1.toString().length > 11)) {
+                output.result = output.operand1.toPrecision(11);
+            } else {
+                output.result = output.operand1;
+            }
+            display.textContent = output.result;
+        }
+        console.log(`operand1 = ${output.operand1}`);
+        console.log(`operation = ${output.operation}`);
+        console.log(`result = ${output.result}`);
+
+        //store operation
+        if (val != "=") { output.operation = val; }
+
+        if (val == "=") {
+            display.textContent = output.result;
+            output.operand1 = output.result;
+            output.result = null;
+        }
+    }
+    if (val == "AC") {
+        output.operand1 = null;
+        output.operation = "";
+        output.result = null;
+        display.textContent = "";
+    }
 }
