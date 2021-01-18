@@ -39,6 +39,7 @@ function populateGrid() {
 }
 populateGrid();
 
+// Keyboard support
 document.addEventListener('keydown', (e) => { listener(e.key) });
 
 let output = {
@@ -47,6 +48,8 @@ let output = {
     result: null,
 }
 
+
+// Event listener function for click and keydown events
 function listener(textContent) {
     const display = document.querySelector(".display");
     const val = textContent;
@@ -54,6 +57,8 @@ function listener(textContent) {
         if (display.textContent == output.result) {
             display.textContent = "";
         }
+
+        // Set display limit to 10 characters
         if ((val == "." && display.textContent.includes(".")) || display.textContent.length >= 10) {
             display.textContent = display.textContent;
         } else {
@@ -100,6 +105,8 @@ function listener(textContent) {
             output.result = null;
         }
     }
+
+    // Clear all user data
     if (val == "AC") {
         output.operand1 = null;
         output.operation = "";
